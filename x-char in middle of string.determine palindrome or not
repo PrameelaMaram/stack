@@ -1,0 +1,64 @@
+//given an array of characters formed with A's and B's .The string is marked with special character x which represents the middle of the list 
+// (for example :- ABABAABABXBABABBAAA ).check whether the string is palindrome 
+#include <stdio.h>
+void m(int k);
+void push(char a,int s[]);
+int pop(int s[]);
+  int s[100],top=0,i,x,n;
+  char a[100];
+int main()
+{ 
+  s[0]=0;
+  printf("enter string");
+  scanf("%s",a);
+  for(i=0;a[i]!='\0';i++)
+  {
+      if(a[i]!='x')
+      push(a[i],s);
+      else
+      { m(i+1);
+       break;
+      }
+  }
+  return 0;
+}
+  
+  void m(int k)
+
+{  int i;
+    for(i=k;a[i]!='\0';i++)
+    {
+        x=pop(s);
+        if(x==a[i])
+         { n=0;}
+         else
+         { n=1;
+          break;
+             
+         }
+         if(x==0)
+         {
+             printf("\n it is not palindrome ");
+             exit(0);
+         }
+    }
+    if(n==1||x==0)
+    {
+        printf("it is not palindrome");
+        exit(0);
+    }
+    
+    printf("it is palindrome");
+}
+
+void push(char a,int s[])
+{
+    s[++top]=a;
+}
+    //printf("Hello World");
+
+    //return 0;
+int pop(int s[])
+{
+    return(s[top--]);
+}
