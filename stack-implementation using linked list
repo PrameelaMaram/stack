@@ -1,0 +1,91 @@
+
+#include <stdio.h>
+//#include<alloc.h>
+#include<stdlib.h>
+struct node
+{
+  int data;
+  struct node* link;
+} *first=NULL;
+void push();
+void pop();
+void display();
+int e;
+void  main()
+{ int x=1,ch;
+while(x)
+ {printf("1.push 2.pop 3.display");
+ printf("\nenter your choice");
+ scanf("%d",&ch);
+ switch(ch)
+ { case 1: push();
+           break;
+    case 2:pop();break;
+    case 3:display();break;
+     
+ }
+ printf("\n Do you want to quit press 0");
+ scanf("%d",&x);
+ }
+    //printf("Hello World");
+
+    //return 0;
+}
+
+void push()
+{ 
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    printf("\nenter the element to insert");
+    scanf("%d",&e);
+    newnode->data=e;
+    newnode->link=NULL;
+    if(first==NULL)
+    first=newnode;
+    else
+    { //struct node*temp;
+     //temp=first;
+     newnode->link=first;
+     first=newnode;
+     
+        
+    }
+    printf("\n %d is inserted ",e);
+}
+
+void pop()
+{
+    struct node*temp;
+    if(first==NULL)
+    printf("\n no element is present to pop");
+    else
+    {
+        temp=first;
+        if(temp->link==NULL)
+        {
+            e=temp->data;
+            first=NULL;
+        }
+        else
+        { e=temp->data;
+            first=temp->link;
+        }
+        printf("\n%d is poped",e);
+        free(temp);
+    }
+    
+}
+
+void display()
+{
+    struct node*temp;
+    temp=first;
+    if(first==NULL)
+    printf("\n no element is present");
+    else
+    {
+        while(temp!=NULL)
+        {printf("%d->",temp->data);
+         temp=temp->link;
+        }
+    }
+}
